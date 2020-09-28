@@ -1,11 +1,24 @@
 import React from 'react';
 
+function Avatar(props) {
+  return (
+    <div>
+      <img src={props.user.url} alt={props.user.name} />
+      <br />
+      <span>{props.user.name}</span>
+    </div>
+  ); 
+}
+
 function App() {
 
-  let imagem = 'https://www.google.com/google.jpg';
+  const user = {
+    url: 'https://www.google.com/google.jpg',
+    name: 'Gustavo Alves'
+  };
 
   return <>
-    <img style={{ width:600 }} src={imagem} alt="alt prop stop complaining" className="sisteminha" />
+    <Avatar user={user} />
   </>;
 }
 

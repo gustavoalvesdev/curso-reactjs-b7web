@@ -2,8 +2,8 @@ import React from 'react';
 
 function Avatar(props) {
   return (
-    <div>
-      <img src={props.user.url} alt={props.user.name} />
+    <div style={{ backgroundColor: '#FF0000', padding: 20, width: 150 }}>
+      <img style={{ width:50, height: 50 }} src={props.user.url} alt={props.user.name} />
       <br />
       <span>{props.user.name}</span>
     </div>

@@ -13,10 +13,12 @@ const Title = styled.h1 `
   font-size: 18px;
 `;
 
+// background-color: ${props => props.backgroundColor || 'blue'};
+
 const Botao = styled.button `
   font-size: 20px;
-  color: white;
-  background-color: black;
+  color: ${props => props.active ? 'white' : 'black'};
+  background-color: ${props => props.active ? 'blue' : 'gray'};
   border: 0;
   cursor: pointer;
 `;
@@ -26,7 +28,8 @@ function App() {
   return (
     <Site>
       <Title>Título bem Legal</Title>
-      <Botao>Clique Aqui</Botao>
+      <Botao active={true} backgroundColor="black">Clique Aqui</Botao>
+      <Botao active={false} backgroundColor="red">Clique Aqui</Botao>
     </Site>
   );
 }

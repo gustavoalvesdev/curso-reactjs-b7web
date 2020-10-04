@@ -13,14 +13,19 @@ const Title = styled.h1 `
   font-size: 18px;
 `;
 
-// background-color: ${props => props.backgroundColor || 'blue'};
-
 const Botao = styled.button `
-  font-size: 20px;
-  color: ${props => props.active ? 'white' : 'black'};
-  background-color: ${props => props.active ? 'blue' : 'gray'};
-  border: 0;
-  cursor: pointer;
+  font-size: 19px;
+  padding: 15px;
+  border: 3px dashed #f00;
+  color: #f00;
+  background-color: #fff;
+  margin: 5px;
+  border-radius: 5px;
+`;
+
+const BotaoPequeno = styled(Botao) `
+  padding: 5px 10px;
+  font-size: 16px;
 `;
 
 function App() {
@@ -28,8 +33,8 @@ function App() {
   return (
     <Site>
       <Title>Título bem Legal</Title>
-      <Botao active={true} backgroundColor="black">Clique Aqui</Botao>
-      <Botao active={false} backgroundColor="red">Clique Aqui</Botao>
+      <Botao>Clique Aqui</Botao>
+      <BotaoPequeno>Clique Aqui</BotaoPequeno>
     </Site>
   );
 }

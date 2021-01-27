@@ -19,10 +19,25 @@ function SearchBox(props) {
 
     }
 
+    function handleKeyUp(e) {
+        if (e.keyCode === 13) {
+            if (props.onEnter) {
+                props.onEnter(texto);
+            }
+            setTexto('');
+
+        }
+    }
+
     return (
 
         <>
-            <InputText type="text" value={texto} onChange={inputTextChange} placeholder={props.frasePadrao ?? 'Digite alguma coisa'} />
+            <InputText
+                type="text"
+                value={texto} onChange={inputTextChange}
+                onKeyUp={handleKeyUp}
+                placeholder={props.frasePadrao ?? 'Digite alguma coisa'}
+            />
         </>
 
     );

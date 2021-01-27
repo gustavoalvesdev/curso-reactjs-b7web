@@ -1,51 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Input = styled.input`
-  width:400px;
-  height:30px;
-  font-size:16px;
-  padding:10px;
-  border: 1px solid #000;
-`;
+function App () {
 
-function App() {
+  const [ contagem, setContagem ] = useState(0);
 
-  const [ email, setEmail ] = useState('');
-  const [ isLogged, setIsLogged ] = useState(true);
-
-  const handleEmailInput = e => {
-    setEmail(e.target.value);
+  const aumentarAction = () => {
+    setContagem(contagem + 1);
   };
+
+  useEffect(() => { 
+    
+    if (contagem == 0) {
+      document.title = 'Começou a brincadeira!';
+    } else {
+      document.title = `Contagem: ${contagem}`; 
+    }
+  }, [contagem]);
 
   return (
 
     <>
-      <Input placeholder="Digite seu e-mail" type="email" value={email} onChange={handleEmailInput} />
-
-      {/*isLogged && 
-        <button>sair</button>
-      */}
-
-      {/*isLogged == false && 
-        <button>logar</button>
-      */}
-
-      {isLogged ? <button>sair</button> : <button>fazer login</button>}
-
-       {/* algo && <Componente /> */}
-        
-      {/* email.length > 0 && 
-        <p>{email.length} caractere{email.length !== 1 ? 's' : ''}</p> */
-      }
-      
-      {email.length > 0 && 
-        <>
-          <p>{email.length} caractere{email.length !== 1 ? 's' : ''}</p>
-          <p>aviso alguma coisa</p>
-        </>
-      }
-      
+      <h1>Contagem: {contagem}</h1>
+      <button onClick={aumentarAction}>Aumentar Número</button>
     </>
 
   );

@@ -12,26 +12,40 @@ const Input = styled.input`
 function App() {
 
   const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [ isLogged, setIsLogged ] = useState(true);
 
   const handleEmailInput = e => {
     setEmail(e.target.value);
-  };
-
-  const handlePasswordInput = e => {
-    setPassword(e.target.value);
-  };
-
-  const handleButton = () => {
-    alert(email + ' - ' + password);
   };
 
   return (
 
     <>
       <Input placeholder="Digite seu e-mail" type="email" value={email} onChange={handleEmailInput} />
-      <Input placeholder="Digite sua senha" type="password" value={password} onChange={handlePasswordInput} />
-      <button onClick={handleButton}>Dizer</button>
+
+      {/*isLogged && 
+        <button>sair</button>
+      */}
+
+      {/*isLogged == false && 
+        <button>logar</button>
+      */}
+
+      {isLogged ? <button>sair</button> : <button>fazer login</button>}
+
+       {/* algo && <Componente /> */}
+        
+      {/* email.length > 0 && 
+        <p>{email.length} caractere{email.length !== 1 ? 's' : ''}</p> */
+      }
+      
+      {email.length > 0 && 
+        <>
+          <p>{email.length} caractere{email.length !== 1 ? 's' : ''}</p>
+          <p>aviso alguma coisa</p>
+        </>
+      }
+      
     </>
 
   );

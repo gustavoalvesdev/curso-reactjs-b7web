@@ -1,72 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import SearchBox from './components/SearchBox';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function App() {
 
-  const [searchText, setSearchText] = useState('');
-  const [ list, setList ] = useState([]);
+  const [name, setName] = useState( localStorage.getItem('name') );
 
   useEffect(() => {
-
-    setList([
-      {
-        title: 'Comprar o bolo', 
-        done: false
-      },
-      {
-        title: 'Pegar o cachorro no petshop', 
-        done: true
-      },
-      {
-        title: 'Gravar aula', 
-        done: false
-      }
-    ]);
-
-  }, []);
-
-
-  function addAction(newItem) {
-    let newList = [...list, {title: newItem, done: false}];
-
-    setList(newList);
-  }
-
-  function handleToggleDone(index) {
-    let newList = [...list];
-    newList[index].done = !newList[index].done;
-
-    setList(newList);
-  }
+    localStorage.setItem('name', name);
+  }, [name]);
 
   return (
 
-    <div>
-      <h1 className="app-title">Lista de Tarefas</h1>
-      <SearchBox 
-        frasePadrao="Adicione uma tarefa e pressione Enter" 
-        onEnter={addAction}  
-      />
+    <>
+      <input type="text" value={name} onChange={e => setName(e.target.value)} />
+    </>
 
-      <p className="obs"><em>Clique no item para marcar com feito ou não feito</em></p>
-
-      <hr />
-      <div className="list-wrapper">
-        <ul className="task-list">
-        {list.map( (item, index) => ( 
-          <li key={index} onClick={() => handleToggleDone(index)}>
-          {item.done &&
-            <del className="done">{item.title}</del>
-          }
-          {!item.done &&
-            <span className="todo">{item.title}</span>
-          }
-          </li> 
-        ))}
-        </ul>
-      </div>
-    </div>
   );
 
 }

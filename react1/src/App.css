@@ -20,3 +20,7 @@ body {
 .done {
   color: green;
 }
+
+.obs {
+  text-align: center;
+}

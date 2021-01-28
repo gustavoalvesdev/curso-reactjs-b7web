@@ -33,6 +33,13 @@ function App() {
     setList(newList);
   }
 
+  function handleToggleDone(index) {
+    let newList = [...list];
+    newList[index].done = !newList[index].done;
+
+    setList(newList);
+  }
+
   return (
 
     <div>
@@ -42,11 +49,13 @@ function App() {
         onEnter={addAction}  
       />
 
+      <p className="obs"><em>Clique no item para marcar com feito ou não feito</em></p>
+
       <hr />
       <div className="list-wrapper">
         <ul className="task-list">
         {list.map( (item, index) => ( 
-          <li key={index}>
+          <li key={index} onClick={() => handleToggleDone(index)}>
           {item.done &&
             <del className="done">{item.title}</del>
           }

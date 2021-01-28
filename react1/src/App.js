@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SearchBox from './components/SearchBox';
+import './App.css';
 
 function App() {
 
@@ -35,26 +36,27 @@ function App() {
   return (
 
     <div>
-      <h1>Lista de Tarefas</h1>
+      <h1 className="app-title">Lista de Tarefas</h1>
       <SearchBox 
-        frasePadrao="Adicione um item" 
+        frasePadrao="Adicione uma tarefa e pressione Enter" 
         onEnter={addAction}  
       />
 
       <hr />
-
-      <ul>
-      {list.map( (item, index) => ( 
-        <li key={index}>
-        {item.done &&
-          <del>{item.title}</del>
-        }
-        {!item.done &&
-          item.title
-        }
-        </li> 
-      ))}
-      </ul>
+      <div className="list-wrapper">
+        <ul className="task-list">
+        {list.map( (item, index) => ( 
+          <li key={index}>
+          {item.done &&
+            <del className="done">{item.title}</del>
+          }
+          {!item.done &&
+            <span className="todo">{item.title}</span>
+          }
+          </li> 
+        ))}
+        </ul>
+      </div>
     </div>
   );
 

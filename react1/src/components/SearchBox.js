@@ -6,7 +6,10 @@ const InputText = styled.input`
     border-radius: 5px;
     padding: 15px;
     font-size: 17px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: auto;
 `;
 
 function SearchBox(props) {
